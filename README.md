@@ -1,0 +1,22 @@
+Read.me files
+Main:
+This is a public repository for the work contained in "**From Capture-Recapture to No Recapture Efficient SCAD Even After Software Updates**"
+
+Abstract:
+
+  SCAD (Side-Channel-based Anomaly Detection) offers a powerful and non-intrusive means of detecting unauthorized behavior in embedded and cyber-physical systems. It leverages signals that emerge from physical activity -- such as electromagnetic (EM) emissions or power consumption traces -- as passive indicators of software execution integrity. However, its deployment remains constrained by the costly and time-consuming need to re-fingerprint whenever a program is updated or modified, as fingerprinting involves a precision-intensive manual capturing process to obtain a baseline representation for each execution path. To address this challenge, we propose a generative modeling framework that synthesizes realistic EM signals for newly introduced or updated execution paths, thus eliminating the need for recollecting signals from scratch. Our approach utilizes a Conditional Wasserstein Generative Adversarial Network with Gradient Penalty (CWGAN-GP) framework trained on real EM traces that are conditioned on Execution State Descriptors (ESDs) that encode instruction sequences, operands, and register values. Comprehensive evaluations at instruction-level granularity demonstrate that our approach generates synthetic signals that faithfully reproduce the distinctive features of real EM emissions -- achieving 85\%-92\% similarity to real emanations. The inclusion of ESD conditioning further improves fidelity, reducing the similarity distance by $\sim$$13\%$. To assess their practical utility towards SCAD, we use the generated signals to train a na\"ive semi-supervised anomaly detection model and find that detection performance across ROC-AUC closely mirrors models trained on real EM data, with differences ranging within +- 1%  across varying signal-to-noise levels. Furthermore, the proposed 1DCNNGAN model (a CWGAN-GP variant) achieves faster training and reduced memory requirements compared to the previously leading ResGAN architecture.
+The following is content inside the folders:
+  - 1_Creating_Training_Datasets: Converts real EM signals of various programs into a training dataset or library of assembly instructions and state information to corresponding EM signals of cycles. This library is used in the next few folders to train a Generative Adversarial Network (GAN).
+  - 2_1_Train_1DLReLUGANs_Model: Trains a 1D Leaky ReLU GAN based model to convert assembly instructions and state information into EM signals.
+  - 2_1_2_Train_1DLReLUGANs_Model_Timeit: Redoes the prior while setting standard parameters such as batch_size in order to compare various model performance with other models.
+  - 2_2_Train_ResGANsModel: Trains a ResNet GAN based model to convert assembly instructions and state information into EM signals.
+  - 2_2_2_Train_ResGANs_Model-2_Timeit: Redoes the prior while setting standard parameters such as batch_size in order to compare various model performance with other models.
+  - 3_Generate_Signals: Utalizes the train models to generate the program update's EM signals.
+  - 4_Calculate_Simialrity: Evaluates the generated signal's fidelity by performing several comparative anaysis against real captured varients.
+  - 5_AddWhiteGaussianNoise: Utalizes a white gaussian noise (noise commonly seen in real scenarios of Side-Channel Analysis) method to add controllable and calculable noise for later assesment on anomaly detection on various signal-to-noise ratios.
+  - 6_1_Real_Signals_Anomaly_Detection: Evaluates radius kNN anomaly detection utalizing real EM signals for training the anomaly detection model for later comparision.
+  - 6_2_1DLeRUGANs_Anomaly_Detection: Evaluates radius kNN anomaly detection utalizing generated signals from the trained 1D Leaky ReLU GAN model for training the anomaly detection model.
+  - 6_3_ResGANs_Anomaly_Detection: Evaluates radius kNN anomaly detection utalizing generated signals from the trained ResNet GAN model for training the anomaly detection model.
+  - 7_OtherExperimentsandFigures: Obtains figures of influence, AUC graphs and other miscellaneous graphs used in the research paper.
+  - Datasets: Dataset of EM signals, state information, and saved model weights.
+  - Imports: Library of various python methods and functions used to perform all the experiments.
