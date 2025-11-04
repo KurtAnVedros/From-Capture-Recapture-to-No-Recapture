@@ -1,3 +1,3 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:17b958a6e0cdd9142417d9bdd9224e7da934b4c354a1df1118fcc3f0a53e9f46
-size 367
+The folder contains several notabooks training the ResGANs model on specific Execution State Descriptors to train it to generate the EM emission of the update programs.
+
+Note: this folder is simply the test for obtaining the memery footprint of the models and the approximate training time under the sample GPU and conditions as when training the ResGANs model.
