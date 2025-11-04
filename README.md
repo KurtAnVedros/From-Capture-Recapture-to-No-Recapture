@@ -1,4 +1,5 @@
-Read.me files
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17527283.svg)](https://doi.org/10.5281/zenodo.17527283)
+
 Main:
 This is a public repository for the work contained in "**From Capture-Recapture to No Recapture Efficient SCAD Even After Software Updates**"
 
